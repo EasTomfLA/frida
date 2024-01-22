@@ -737,6 +737,10 @@ if ! grep -Eq "^$toolchain_version\$" "$FRIDA_TOOLROOT/.version" 2>/dev/null; th
     tar -C "$FRIDA_TOOLROOT" -xjf $local_toolchain || exit 1
   else
     echo "Downloading and deploying toolchain..."
+    echo "toolchain_version:" ${toolchain_version}
+    echo "build_platform:" ${build_platform}
+    echo "build_arch:" ${build_arch}
+    echo "download toolchain:https://build.frida.re/toolchain-${toolchain_version}-${build_platform}-${build_arch}.tar.bz2" 
     $download_command "https://build.frida.re/toolchain-${toolchain_version}-${build_platform}-${build_arch}.tar.bz2" | tar -C "$FRIDA_TOOLROOT" -xj $tar_stdin || exit 1
   fi
 
